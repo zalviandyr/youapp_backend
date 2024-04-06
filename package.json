@@ -1,8 +1,8 @@
 {
   "name": "youapp-backend",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "YouApp - Backend",
+  "author": "Zukron Alviandy Rahmadhan",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
