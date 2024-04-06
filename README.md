@@ -7,11 +7,19 @@
 - RabbitMQ V3
 - Docker
 - Typescript
+- JWT Token
 
 ## Requirement
 
 - NodeJS v20
 - Docker
+
+## Features
+
+- Register new user
+- Login user that return a JWT Token
+- CRUD Profile
+- Realtime chat use RabbitMQ
 
 ## Setup Local
 
