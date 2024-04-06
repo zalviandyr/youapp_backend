@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { DatabaseService } from './database/database.service';
 import { SwaggerService } from './swagger/swagger.service';
 
 @Module({
-  providers: [DatabaseService, SwaggerService],
+  imports: [],
+  providers: [SwaggerService],
 })
 export class CommonModule {}
