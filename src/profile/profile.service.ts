@@ -3,7 +3,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Profile } from './schemas/profile.schema';
 import { Model } from 'mongoose';
 import { ProfileDto } from './dto/profile.dto';
-import { User } from 'src/auth/schemas/user.schema';
 
 @Injectable()
 export class ProfileService {
@@ -12,11 +11,11 @@ export class ProfileService {
     private readonly profileSchema: Model<Profile>,
   ) {}
 
-  async createProfile(data: ProfileDto, user: User): Promise<Profile> {
+  async createProfile(data: ProfileDto, userId: string): Promise<Profile> {
     const result = (
       await this.profileSchema.create({
         ...data,
-        user,
+        user: userId,
         horoscope: 'xx',
         zodiac: 'xxx',
         profilePicture: data.profilePicture.buffer.toString('base64'),

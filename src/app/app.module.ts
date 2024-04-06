@@ -18,5 +18,6 @@ import { IsUnique } from './decorator/is-unique';
   ],
   controllers: [],
   providers: [SwaggerService, IsUnique],
+  exports: [],
 })
 export class AppModule {}

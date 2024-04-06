@@ -11,7 +11,12 @@ import { jwtConstant } from '../app/constants';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private readonly jwtService: JwtService) {}
+  constructor(
+    // @InjectModel(User.name)
+    // private readonly userSchema: Model<User>,
+    // private readonly authService: AuthService,
+    private readonly jwtService: JwtService,
+  ) {}
 
   canActivate(
     context: ExecutionContext,
@@ -28,9 +33,7 @@ export class AuthGuard implements CanActivate {
         secret: jwtConstant.secret,
       });
 
-      // const userId = payload.sub;
-
-      request.user = payload;
+      request.user = payload.sub;
     } catch (error) {
       if (error.name === 'TokenExpiredError') {
         throw new UnauthorizedException('Token expired');
