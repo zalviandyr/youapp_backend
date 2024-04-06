@@ -18,7 +18,7 @@
 
 - Register new user
 - Login user that return a JWT Token
-- CRUD Profile
+- Profile user
 - Realtime chat use RabbitMQ
 
 ## Setup Local
