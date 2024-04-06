@@ -12,26 +12,27 @@ export class ProfileService {
   ) {}
 
   async createProfile(data: ProfileDto, userId: string): Promise<Profile> {
-    const result = (
-      await this.profileSchema.create({
+    return await this.profileSchema.create({
+      ...data,
+      user: userId,
+      horoscope: 'xx',
+      zodiac: 'xxx',
+      profilePicture: data.profilePicture.buffer.toString('base64'),
+    });
+  }
+
+  async updateProfile(data: ProfileDto, userId: string): Promise<Profile> {
+    const profile = await this.profileSchema.findOne({ user: userId });
+
+    return profile
+      .set({
         ...data,
-        user: userId,
-        horoscope: 'xx',
-        zodiac: 'xxx',
         profilePicture: data.profilePicture.buffer.toString('base64'),
       })
-    ).toJSON();
-
-    delete result.profilePicture;
-
-    return result;
+      .save();
   }
 
   getProfile(): string {
     return 'Create Profile';
-  }
-
-  updateProfile(): string {
-    return 'Update Profile';
   }
 }

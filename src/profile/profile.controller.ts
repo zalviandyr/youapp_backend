@@ -24,8 +24,10 @@ export class ProfileController {
   }
 
   @Post('updateProfile')
-  updateProfile() {
-    return this.profileService.updateProfile();
+  @FormDataRequest()
+  updateProfile(@Request() req, @Body() data: ProfileDto) {
+    const user = req.user;
+    return this.profileService.updateProfile(data, user);
   }
 
   @Get('getProfile')
