@@ -57,7 +57,10 @@ export class MessageService {
     return result;
   }
 
-  viewMessage(): string {
-    return 'View Message';
+  async viewMessage(userId: string): Promise<Message[]> {
+    const messages = await this.messageSchema
+      .find({ from: userId })
+      .populate(['from', 'to']);
+    return messages;
   }
 }

@@ -16,8 +16,10 @@ export class MessageController {
   constructor(private readonly messageService: MessageService) {}
 
   @Get('viewMessage')
-  viewMessage() {
-    return this.messageService.viewMessage();
+  viewMessage(@Request() req) {
+    const userId = req.user;
+
+    return this.messageService.viewMessage(userId);
   }
 
   @Post('sendMessage')
