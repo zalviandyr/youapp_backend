@@ -1,6 +1,14 @@
-import { Controller, Get, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
 import { MessageService } from './message.service';
 import { AuthGuard } from 'src/auth/auth.guard';
+import { MessageDto } from './dto/message.dto';
 
 @Controller()
 @UseGuards(AuthGuard)
@@ -13,7 +21,9 @@ export class MessageController {
   }
 
   @Post('sendMessage')
-  sendMessage() {
-    return this.messageService.sendMessage();
+  sendMessage(@Request() req, @Body() data: MessageDto) {
+    const userId = req.user;
+
+    return this.messageService.sendMessage(data, userId);
   }
 }
