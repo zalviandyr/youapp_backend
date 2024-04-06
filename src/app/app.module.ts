@@ -3,7 +3,6 @@ import { AuthModule } from '../auth/auth.module';
 import { ProfileModule } from '../profile/profile.module';
 import { MessageModule } from '../message/message.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { SwaggerService } from './swagger/swagger.service';
 import { IsUnique } from './decorator/is-unique';
 
 @Module({
@@ -17,7 +16,7 @@ import { IsUnique } from './decorator/is-unique';
     }),
   ],
   controllers: [],
-  providers: [SwaggerService, IsUnique],
+  providers: [IsUnique],
   exports: [],
 })
 export class AppModule {}
