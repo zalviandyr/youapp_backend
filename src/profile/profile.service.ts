@@ -32,7 +32,7 @@ export class ProfileService {
       .save();
   }
 
-  getProfile(): string {
-    return 'Create Profile';
+  async getProfile(userId: string): Promise<string> {
+    return await this.profileSchema.findOne({ user: userId });
   }
 }

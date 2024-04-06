@@ -31,7 +31,8 @@ export class ProfileController {
   }
 
   @Get('getProfile')
-  getProfile() {
-    return this.profileService.getProfile();
+  getProfile(@Request() req) {
+    const user = req.user;
+    return this.profileService.getProfile(user);
   }
 }
